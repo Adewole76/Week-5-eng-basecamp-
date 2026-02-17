@@ -12,6 +12,7 @@ function App() {
     <Route></Route>
     <Route></Route>
     <Route></Route>
+    <Route></Route>
   </Routes>
   </BrowserRouter>
   )
