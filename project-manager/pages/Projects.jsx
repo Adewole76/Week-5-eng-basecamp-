@@ -1,4 +1,8 @@
-const projectsProject = () => {
-
+const ProjectsProject = () => {
+  return(
+    <main>
+        <h2>This is the projects page</h2>
+    </main>
+  )
 }
-export default projectsProject
+export default ProjectsProject

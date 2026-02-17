@@ -4,9 +4,9 @@ const NavBar = () => {
         <nav>
             <h1>ProJect Manager</h1>
             <ul>
-                <li>Dashboard</li>
-                <li>Profile</li>
-                <li>Projects</li>
+                <Link to="/dashboard"><li>Dashboard</li></Link>
+                <Link to="/profile"><li>Profile</li></Link>
+                <Link to="/projects"><li>Projects</li></Link>
             </ul>
             <section>
                 <button>Light mode on</button>

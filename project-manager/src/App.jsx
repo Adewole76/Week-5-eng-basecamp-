@@ -3,11 +3,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import loginPage from '../pages/Login'
-import dashBoard from '../pages/DashBoard'
-import profilePage from '../pages/Profile'
-import projectBoard from '../pages/ProjectBoard'
-import projectsProject from '../pages/Projects'
+import LoginPage from '../pages/Login'
+import DashBoard from '../pages/DashBoard'
+import ProfilePage from '../pages/Profile'
+import ProjectBoard from '../pages/ProjectBoard'
+import ProjectsProject from '../pages/Projects'
 import NavBar from './Navbar'
 
 function App() {
@@ -16,11 +16,11 @@ function App() {
   <BrowserRouter>
   <NavBar></NavBar>
   <Routes>
-    <Route path='/' element={<loginPage></loginPage>}/>
-    <Route path='/dashboard' element={<dashBoard></dashBoard>}/>
-    <Route path='/profile' element={<profilePage></profilePage>}/>
-    <Route path='/projects' element={<projectBoard></projectBoard>}/>
-    <Route path='/projects/:id' element={<projectBoard></projectBoard>}/>
+    <Route path='/' element={<LoginPage></LoginPage>}/>
+    <Route path='/dashboard' element={<DashBoard></DashBoard>}/>
+    <Route path='/profile' element={<ProfilePage></ProfilePage>}/>
+    <Route path='/projects' element={<ProjectBoard></ProjectBoard>}/>
+    <Route path='/projects/:id' element={<ProjectsProject></ProjectsProject>}/>
     <Route path='/{root}'/>
   </Routes>
   </BrowserRouter>

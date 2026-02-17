@@ -1,6 +1,6 @@
-const loginPage = () => {
+const LoginPage = () => {
     return(
         <main></main>
     )
 }
-export default loginPage
+export default LoginPage
