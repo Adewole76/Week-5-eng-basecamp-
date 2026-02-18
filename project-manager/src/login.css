@@ -1,0 +1,38 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.login{
+    width: 350px;
+  }
+  .login label{
+    display: block;
+    margin-top: 1em;
+  }
+  .login label input{
+    display: block;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(178, 174, 174, 0.745)
+  }
+  .login button{
+    display: block;
+    width: 100%;
+    padding: 1em 0;
+    border-radius: 10px;
+    margin-left: 5px;
+  }
+  .login .login-btn{
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+  }
+  .login .sign-in-Google{
+    margin-top: 1em;
+  }
+  

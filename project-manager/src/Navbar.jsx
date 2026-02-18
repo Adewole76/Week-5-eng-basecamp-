@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 const NavBar = () => {
     return(
         <nav>
-            <h1>ProJect Manager</h1>
+            <h1>Boardly</h1>
             <ul>
                 <Link to="/dashboard"><li>Dashboard</li></Link>
                 <Link to="/profile"><li>Profile</li></Link>
