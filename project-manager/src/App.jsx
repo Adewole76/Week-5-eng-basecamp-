@@ -10,6 +10,7 @@ import ProfilePage from '../pages/Profile'
 import ProjectBoard from '../pages/ProjectBoard'
 import ProjectsProject from '../pages/Projects'
 import NavBar from './Navbar'
+import userAuthenticationProvider from '../Context/AuthContext'
 
 function App() {
  

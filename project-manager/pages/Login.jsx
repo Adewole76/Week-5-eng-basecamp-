@@ -9,6 +9,7 @@ const LoginPage = () => {
         <main>
             {showNavbar?<NavBar></NavBar>:''}
             <section className="login">
+            <h1>Boardly</h1>    
             <h2>Welcome Back</h2>
             <p>Welcome back! Please eneter your details</p>
             <form action="">
