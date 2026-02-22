@@ -40,7 +40,7 @@ useEffect(() => {
     }
 
     return(
-        <firstContext.Provider value ={[isloggedin, currentUser, handleLoggedIn, handleloggout]}>
+        <firstContext.Provider value={{ isloggedin, currentUser, handleLoggedIn, handleloggout }}>
         {children}
         </firstContext.Provider>
     )

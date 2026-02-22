@@ -6,6 +6,7 @@ import ProfilePage from '../pages/Profile'
 import ProjectBoard from '../pages/ProjectBoard'
 import ProjectsProject from '../pages/Projects'
 import NavBar from './Navbar'
+import ProtectedRoutesComponent from "./ProtectedRoutes";
 const LayoutComponent = () => {
     const location = useLocation()
   const showNavbar = location.pathname !== '/';
@@ -14,10 +15,26 @@ const LayoutComponent = () => {
      {showNavbar?<NavBar></NavBar>:''}
      <Routes>
        <Route path='/' element={<LoginPage></LoginPage>}/>
-       <Route path='/dashboard' element={<DashBoard></DashBoard>}/>
-       <Route path='/profile' element={<ProfilePage></ProfilePage>}/>
-       <Route path='/projects' element={<ProjectBoard></ProjectBoard>}/>
-       <Route path='/projects/:id' element={<ProjectsProject></ProjectsProject>}/>
+       <Route path='/dashboard' element={
+       <ProtectedRoutesComponent>
+       <DashBoard></DashBoard>
+       </ProtectedRoutesComponent>
+       }/>
+       <Route path='/profile' element={
+       <ProtectedRoutesComponent>
+       <ProfilePage></ProfilePage>
+       </ProtectedRoutesComponent>
+       }/>
+       <Route path='/projects' element={
+       <ProtectedRoutesComponent>
+       <ProjectBoard></ProjectBoard>
+       </ProtectedRoutesComponent>
+       }/>
+       <Route path='/projects/:id' element={
+       <ProtectedRoutesComponent>
+       <ProjectsProject></ProjectsProject>
+       </ProtectedRoutesComponent>
+       }/>
        <Route path='/{root}'/>
      </Routes></main>
     )

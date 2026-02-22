@@ -6,13 +6,15 @@ import NavBar from '../src/Navbar';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { firstContext } from '../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 const LoginPage = () => {
-const {isloggedin, currentUser, handleLoggedIn, handleloggout} = useContext(firstContext);
+const {handleLoggedIn} = useContext(firstContext);
+//console.log('handledloggin', handleLoggedIn)
 const [userNameValue, setUserName] = useState('')
 const [passwordValue, setpassword] = useState('')
 const [Email, setEmail] = useState('');
 const [errorMessage, setErrorMessage] = useState('');
-
+const navigate = useNavigate()
 const handleEmailChange = (e) => {
     setEmail(e.target.value);
 }
@@ -23,11 +25,16 @@ const handleUserChange = (e) => {
     setUserName(e.target.value)
 }
     const handleSubmit = (e) => {
-        e.preventDefault()
+        if(!userNameValue || !Email || !passwordValue){
+            setErrorMessage('please fill out all the fields');
+        }else{
+        e.preventDefault();
      handleLoggedIn(userNameValue, Email, passwordValue);
+     navigate('/dashboard');
+    }
     }
     return(
-        <main>
+        <main className='login-main'>
             <section className="login">
             <h1>Boardly<FaPaperclip className='paper-clip'></FaPaperclip></h1>    
             <h2>Welcome Back</h2>
@@ -45,8 +52,9 @@ const handleUserChange = (e) => {
                 <input onChange={handlepasswordChange} value={passwordValue} type="password" placeholder="password"/>
                </label>
                <p>forgot Password</p>
-               <button type='submit' className="login-btn">Login</button>
+               <button type="submit" className="login-btn">Login</button>
             </form>
+            <p className='error-message'>{errorMessage}</p>
             <button className="sign-in-Google">Sign in with <IoLogoGoogle /></button>
             </section>
         </main>

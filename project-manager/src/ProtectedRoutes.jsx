@@ -2,9 +2,10 @@ import { Outlet, Navigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { firstContext } from '../Context/AuthContext';
 
-const ProtectedRoutesComponent = () => {
-    const {isloggedin, currentUser, handleLoggedIn, handleloggout} = useContext(firstContext);
+const ProtectedRoutesComponent = ({children}) => {
+    const {isloggedin} = useContext(firstContext);
 
-    return isloggedin ? <Outlet></Outlet>: <Navigate to="/" replace></Navigate>
+    return (isloggedin ? 
+    children: <Navigate to="/" replace></Navigate>)
 }
 export default ProtectedRoutesComponent
