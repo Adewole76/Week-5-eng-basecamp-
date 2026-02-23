@@ -1,0 +1,47 @@
+.Dash-header{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3em;
+    padding: 0 3em; 
+    margin-bottom: 4em
+}
+.Welcome-Message{
+display: inline-block;
+margin: 0 0.2em 0 0 ;
+vertical-align: middle;
+}
+.new-project-btn{
+    padding: 1em;
+    background-color: #1a2c3b;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid transparent;    
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+}
+.user-Email-Avatar{
+    display: inline-block;
+    margin: 0;
+}
+.user-Avatar{
+   vertical-align: middle;
+}
+.tasks-heading, .projects-heading{
+    padding-left: 1em;
+    font-size: 3em;
+}
+.stat-card-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em;
+    padding: 0 2em;
+    margin-top: 2em;
+}
+.project-cards-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+    padding: 2em;
+    row-gap: 2em;}

@@ -26,6 +26,7 @@ const handleUserChange = (e) => {
 }
     const handleSubmit = (e) => {
         if(!userNameValue || !Email || !passwordValue){
+            e.preventDefault()
             setErrorMessage('please fill out all the fields');
         }else{
         e.preventDefault();

@@ -36,7 +36,8 @@ const LayoutComponent = () => {
        </ProtectedRoutesComponent>
        }/>
        <Route path='/{root}'/>
-     </Routes></main>
+     </Routes>
+     </main>
     )
 }
 export default LayoutComponent
