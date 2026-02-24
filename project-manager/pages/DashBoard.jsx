@@ -9,12 +9,13 @@ import { FaClipboardList } from "react-icons/fa";
 import { IoMdTimer } from "react-icons/io";
 import { FaCheckCircle } from "react-icons/fa";
 import ProjectCard from "../src/ProjectCard";
+import { useState } from "react";
 const DashBoard = () => {
    console.log('dashboard is rendering')
    const {currentUser} = useContext(firstContext);
    console.log('current', currentUser)
  return(
-    <section>
+    <section className="Dash-body">
       <header className="Dash-header">
       <div>
        <h1 className="Welcome-Message">Welcome {currentUser.UserName}</h1>
