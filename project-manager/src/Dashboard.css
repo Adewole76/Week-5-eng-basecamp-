@@ -49,3 +49,28 @@ vertical-align: middle;
     column-gap: 2em;
     padding: 2em;
     row-gap: 2em;}
+
+    .new-project-form label{
+        display: block;
+    }
+    .new-project-form label textarea{
+        display: block;
+    }
+    .new-project-form label input{
+        display: block;
+    }
+    .submit-btn{
+        padding: 1em 2em;
+        background-color: #1a2c3b;
+        color: white;
+        font-weight: bold;
+        border: 1px solid transparent;
+        margin: 1em 0 0 0;
+    }
+    h3{
+        margin: 0;
+    }
+    .top-of-modal{
+        display: flex;
+        justify-content: space-between;
+    }

@@ -17,6 +17,7 @@ const ProjectContextProvider = ({children}) => {
     Status: 'todo',
     priority: 'high',
   }
+  // add task to project task array
   const addTask = () => {
   let Task = Object.create(taskExample);
   }
