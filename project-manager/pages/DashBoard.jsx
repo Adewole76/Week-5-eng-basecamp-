@@ -16,18 +16,25 @@ import { firstProjectContext } from "../Context/ProjectContext";
 Modal.setAppElement('#root')
 const DashBoard = () => {
   const [modalToggle, setModalToogle] = useState(false); 
-   console.log('dashboard is rendering')
+  //  console.log('dashboard is rendering')
    const {currentUser} = useContext(firstContext);
    const [nameInput, setnameInput] = useState('');
    const [descriptioncontent, setDescriptionContent] = useState('');
    const{addProject, ProjectsArray} = useContext(firstProjectContext)
    const handlenameChange = (event) => {
-    setnameInput(e.target.value)
+    setnameInput(event.target.value)
    }
-   const handledescriptionChange = () => {
-    setDescriptionContent(e.target.value);
+   const handledescriptionChange = (event) => {
+    setDescriptionContent(event.target.value);
    }
-   console.log('current', currentUser)
+   const handleModalformSubmit = (e) => {
+      e.preventDefault();
+      addProject(nameInput, descriptioncontent);
+      setModalToogle(false);
+      setnameInput('');
+      setDescriptionContent('')
+    }
+  //  console.log('current', currentUser)
    const customStyles = {
     content: {
       top: '50%',
@@ -78,7 +85,7 @@ const DashBoard = () => {
   <h1 className="projects-heading">Recent Projects</h1>
   <section className="project-cards-section">
     {ProjectsArray.map(project => {
-      <ProjectCard
+     return <ProjectCard
       projectName={project.projectName}
       projectDescription = {project.projectDescription}
       projectCompletedTask = {project.tasks.length}
@@ -86,51 +93,26 @@ const DashBoard = () => {
       projectProgress = {project.projectStatus}
       ></ProjectCard>
     })}
-    <ProjectCard projectName="Design dash"
-    projectProgress="Completed"
-    projectDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
-     projectCompletedTask="73"
-     projectTotalTasks="34"
-     projectId ="24"
-    ></ProjectCard>
-    <ProjectCard
-    projectName="Design dash"
-    projectProgress="Completed"
-    projectDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
-     projectCompletedTask="73"
-     projectTotalTasks="34"
-     projectId ="24"
-    ></ProjectCard>
-    <ProjectCard
-    projectName="Design dash"
-    projectProgress="Completed"
-    projectDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown"
-     projectCompletedTask="73"
-     projectTotalTasks="34"
-     projectId ="24"
-    ></ProjectCard>
+    
   </section>
   <Modal style={customStyles} isOpen = {modalToggle} onRequestClose={() => setModalToogle(false)}>
     <header className="top-of-modal">
     <h3>Create a new project</h3>
    <IoMdCloseCircle onClick={() => setModalToogle(false)}></IoMdCloseCircle>
     </header>
-   <form className="new-project-form" >
+   <form className="new-project-form" onSubmit={handleModalformSubmit} >
     <label htmlFor="">
       Project Name
-      <input onChange={() => handlenameChange(e)} type="text" placeholder="project-name" />
+      <input value={nameInput} onChange={(e) => handlenameChange(e)} type="text" placeholder="project-name" />
     </label>
 
 <label htmlFor="">
   Description
-  <textarea onChange={() => handledescriptionChange(e)} name="" id="" cols="30" rows="10"></textarea>
+  <textarea value={descriptioncontent} onChange={(e) => handledescriptionChange(e)} name="" id="" cols="30" rows="10"></textarea>
 </label>
-
+<button type="submit" className="submit-btn">Submit</button>
    </form>
-   <button className="submit-btn">Submit</button>
+
   </Modal>
     </section>
  ) 

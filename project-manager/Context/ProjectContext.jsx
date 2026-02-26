@@ -40,7 +40,7 @@ const ProjectContextProvider = ({children}) => {
     projectName: name,
     projectDescription: description,
     createdAt: new Date().toISOString(),
-    projectStatus: 'Not StartedS',
+    projectStatus: 'Not Started',
     tasks: []
    }
    const updatedProjectsArray = [...ProjectsArray, newProject]
@@ -55,7 +55,7 @@ const ProjectContextProvider = ({children}) => {
 
   }
     return(
-      <firstProjectContext.Provider value={{addTask, addProject, updateTask, deleteTask }}>
+      <firstProjectContext.Provider value={{addTask, addProject, updateTask, deleteTask, ProjectsArray }}>
         {children}
       </firstProjectContext.Provider>
     )
