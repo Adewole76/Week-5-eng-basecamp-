@@ -12,11 +12,21 @@ import ProjectCard from "../src/ProjectCard";
 import { useState } from "react";
 import Modal from 'react-modal'
 import { IoMdCloseCircle } from "react-icons/io";
+import { firstProjectContext } from "../Context/ProjectContext";
 Modal.setAppElement('#root')
 const DashBoard = () => {
   const [modalToggle, setModalToogle] = useState(false); 
    console.log('dashboard is rendering')
    const {currentUser} = useContext(firstContext);
+   const [nameInput, setnameInput] = useState('');
+   const [descriptioncontent, setDescriptionContent] = useState('');
+   const{addProject, ProjectsArray} = useContext(firstProjectContext)
+   const handlenameChange = (event) => {
+    setnameInput(e.target.value)
+   }
+   const handledescriptionChange = () => {
+    setDescriptionContent(e.target.value);
+   }
    console.log('current', currentUser)
    const customStyles = {
     content: {
@@ -67,6 +77,15 @@ const DashBoard = () => {
   </section>
   <h1 className="projects-heading">Recent Projects</h1>
   <section className="project-cards-section">
+    {ProjectsArray.map(project => {
+      <ProjectCard
+      projectName={project.projectName}
+      projectDescription = {project.projectDescription}
+      projectCompletedTask = {project.tasks.length}
+      projectTotalTasks={project.tasks.length}
+      projectProgress = {project.projectStatus}
+      ></ProjectCard>
+    })}
     <ProjectCard projectName="Design dash"
     projectProgress="Completed"
     projectDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -99,15 +118,15 @@ const DashBoard = () => {
     <h3>Create a new project</h3>
    <IoMdCloseCircle onClick={() => setModalToogle(false)}></IoMdCloseCircle>
     </header>
-   <form className="new-project-form" action="">
+   <form className="new-project-form" >
     <label htmlFor="">
       Project Name
-      <input type="text" placeholder="project-name" />
+      <input onChange={() => handlenameChange(e)} type="text" placeholder="project-name" />
     </label>
 
 <label htmlFor="">
   Description
-  <textarea name="" id="" cols="30" rows="10"></textarea>
+  <textarea onChange={() => handledescriptionChange(e)} name="" id="" cols="30" rows="10"></textarea>
 </label>
 
    </form>

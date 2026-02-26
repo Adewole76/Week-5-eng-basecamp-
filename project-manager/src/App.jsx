@@ -12,12 +12,15 @@ import ProjectsProject from '../pages/Projects'
 import NavBar from './Navbar'
 import UserAuthenticationProvider from '../Context/AuthContext'
 import LayoutComponent from './layout'
+import ProjectContextProvider from '../Context/ProjectContext'
 
 function App() {
   return (
   <BrowserRouter>
   <UserAuthenticationProvider>
+    <ProjectContextProvider>
     <LayoutComponent></LayoutComponent>
+    </ProjectContextProvider>
   </UserAuthenticationProvider>
   </BrowserRouter>
   )

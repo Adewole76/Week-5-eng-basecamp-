@@ -1,8 +1,9 @@
 import { createContext, Component } from "react";
-
+import { useState } from "react";
+import { useEffect } from "react";
 export const firstProjectContext = createContext();
 const ProjectContextProvider = ({children}) => {
-  let ProjectsArray = [];
+  const [ProjectsArray, setProjectsArray] = useState([])
   let projectExample = {
     id: 1,
     name: 'design website',
@@ -10,6 +11,11 @@ const ProjectContextProvider = ({children}) => {
     tasks: [
     ]
   }
+  useEffect(() => {
+  const savedProjectsArray = localStorage.getItem('projects')
+  let loadedProjects = !savedProjectsArray ? []:JSON.parse(savedProjectsArray)
+  setProjectsArray(loadedProjects);
+  },[])
   let taskExample = {
     id: 1,
     title: 'Desgin Mockups',
@@ -17,14 +23,30 @@ const ProjectContextProvider = ({children}) => {
     Status: 'todo',
     priority: 'high',
   }
+ 
   // add task to project task array
-  const addTask = () => {
-  let Task = Object.create(taskExample);
+  const addTask = (name, description) => {
+     const newTask = {
+      taskId: crypto.randomUUID(),
+      taskName: name,
+      taskDescription: description,
+      taskStatus: 'not Started'
+     }
+     
   }
-  const addProject = () => {
-    let project = Object.create(projectExample);
-    ProjectsArray.push(project)
-    localStorage.setItem('projects', JSON.stringify(ProjectsArray));
+  const addProject = (name, description) => {
+   const newProject = {
+    projectId: crypto.randomUUID(),
+    projectName: name,
+    projectDescription: description,
+    createdAt: new Date().toISOString(),
+    projectStatus: 'Not StartedS',
+    tasks: []
+   }
+   const updatedProjectsArray = [...ProjectsArray, newProject]
+    
+    setProjectsArray(updatedProjectsArray)
+    localStorage.setItem('projects', JSON.stringify(updatedProjectsArray));
   }
   const updateTask = () => {
     let replacementTask = Object.create(taskExample)
