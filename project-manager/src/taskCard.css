@@ -1,0 +1,38 @@
+.task-cards{
+    width: 300px;
+    height: 150px;
+    background-color: white;
+    border: 1px solid rgba(86, 85, 85, 0.686);
+    padding: 1em;
+    border-radius: 1em;
+}
+.task-head-section h4{
+    margin: 0;
+    display: inline-block;
+    font-size: 20px;
+}
+.task-head-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+section .icon{
+  vertical-align: middle;
+}
+footer{
+    margin-top: 0.5em;
+}
+ footer p{
+    display: inline-block;
+    margin: 0;
+    background-color: #1a2c3b;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
+footer .priority{
+    margin-right: 6px;
+}
+article{
+    margin-top: 1.5em;
+}

@@ -25,15 +25,30 @@ const ProjectContextProvider = ({children}) => {
   }
  
   // add task to project task array
-  const addTask = (name, description) => {
+  const addTask = (name, description, priority, projectID) => {
      const newTask = {
+      particular: projectID,
       taskId: crypto.randomUUID(),
       taskName: name,
       taskDescription: description,
-      taskStatus: 'not Started'
+      taskStatus: 'not Started',
+      taskPriority: priority
      }
-     
+     const particularProject = ProjectsArray.find(project => project.projectId === projectID)
+const editedProject = {
+  ...particularProject,tasks:[...particularProject, newTask]
+
+}
+const mappedProjectsArray = ProjectsArray.map(project =>{
+  if(project.projectId === projectID){
+    return editedProject
+  }else {
+    return project
   }
+})
+setProjectsArray(mappedProjectsArray);
+localStorage.setItem('projects', mappedProjectsArray);
+    }
   const addProject = (name, description) => {
    const newProject = {
     projectId: crypto.randomUUID(),
