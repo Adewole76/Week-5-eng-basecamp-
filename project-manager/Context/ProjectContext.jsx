@@ -36,7 +36,7 @@ const ProjectContextProvider = ({children}) => {
      }
      const particularProject = ProjectsArray.find(project => project.projectId === projectID)
 const editedProject = {
-  ...particularProject,tasks:[...particularProject, newTask]
+  ...particularProject,tasks:[...particularProject.tasks, newTask]
 
 }
 const mappedProjectsArray = ProjectsArray.map(project =>{

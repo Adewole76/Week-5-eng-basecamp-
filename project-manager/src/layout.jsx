@@ -27,12 +27,12 @@ const LayoutComponent = () => {
        }/>
        <Route path='/projects' element={
        <ProtectedRoutesComponent>
-       <ProjectBoard></ProjectBoard>
+       <ProjectsProject></ ProjectsProject>
        </ProtectedRoutesComponent>
        }/>
        <Route path='/projects/:id' element={
        <ProtectedRoutesComponent>
-       <ProjectsProject></ProjectsProject>
+       <ProjectBoard></ProjectBoard>
        </ProtectedRoutesComponent>
        }/>
        <Route path='/{root}'/>
