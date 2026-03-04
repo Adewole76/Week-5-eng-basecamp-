@@ -30,7 +30,7 @@ const LayoutComponent = () => {
        <ProjectsProject></ ProjectsProject>
        </ProtectedRoutesComponent>
        }/>
-       <Route path='/projects/:id' element={
+       <Route path='/projectsboard/:id' element={
        <ProtectedRoutesComponent>
        <ProjectBoard></ProjectBoard>
        </ProtectedRoutesComponent>

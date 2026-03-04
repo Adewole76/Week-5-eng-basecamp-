@@ -1,6 +1,10 @@
 import './projectCard.css'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const ProjectCard = ({projectName, projectProgress, projectDescription, projectTotalTasks, projectCompletedTask, projectId }) => {
 return(
+   <Link
+      to={`/projectsboard/${projectId}`}>
    <div className="project-card-container">
     <header className='card-header'>
      <h1 className="project-name">{projectName}</h1><p className="project-progress">{projectProgress}</p>
@@ -18,6 +22,7 @@ return(
      </section>
      <p className="project-Id">{projectId}</p>
    </div>
+   </Link>
 )
 }
 export default ProjectCard

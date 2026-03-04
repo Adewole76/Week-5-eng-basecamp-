@@ -14,6 +14,7 @@ const ProjectsProject = () => {
        projectCompletedTask = {project.tasks.length}
        projectTotalTasks={project.tasks.length}
        projectProgress = {project.projectStatus}
+       projectId ={project.projectId}
        ></ProjectCard>
      })}
     </section>

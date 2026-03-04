@@ -41,3 +41,6 @@
 .total-label, .complete-label{
     margin: 0;
 }
+.project-Id{
+    display: none;
+}
