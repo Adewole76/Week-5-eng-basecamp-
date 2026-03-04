@@ -10,6 +10,9 @@ import { IoMdCloseCircle } from "react-icons/io";
 Modal.setAppElement('#root')
 const ProjectBoard = () => {
     const [TaskmodalToggle, setTaskModalToogle] = useState(false);
+    const [taskNameInputvalue, setTaskNameInput] = useState('')
+    const [taskDescriptionValue, setTaskDescription] = useState('')
+    const [prioritydropdownvalue, setPriorityValue] = useState('')
     const {id} = useParams();
     console.log('id from useParams:', id);
     const {addTask, ProjectsArray} = useContext(firstProjectContext);
@@ -25,8 +28,22 @@ const ProjectBoard = () => {
     //         taskdescription: 'build a navbar component with a hamburger menu'
     //     }
     // ]
+    const handlePriorityChange = (event) => {
+      setPriorityValue(event.target.value);
+    }
+    const handleTaskInputChange = (event) => {
+        setTaskNameInput(event.target.value)
+    }
+    const handletasKDescriptionchange = (event) => {
+        setTaskDescription(event.target.value)
+    }
+
     const addButtonListenerFunction = () =>{
         setTaskModalToogle(true)
+    }
+    const handletaskModalSubmit = (e) => {
+        e.preventDefault();
+        addTask(taskNameInputvalue, taskDescriptionValue, prioritydropdownvalue, id)
     }
 return(
     <main className='projects-main'>
@@ -39,24 +56,37 @@ return(
           <h2>Add a Task to this Project</h2>
         <IoMdCloseCircle onClick={() => setTaskModalToogle(false)}></IoMdCloseCircle>
         </header>
+        <form action="">
         <label htmlFor="">
         Task Name
-        <input type="text"  placeholder='Task Name'/>
+        <input type="text" 
+        onChange={handleTaskInputChange}
+        value={taskNameInputvalue}  placeholder='Task Name'/>
         </label>
 
         <label htmlFor="">
             Description
-            <textarea name="" id="" cols="30" rows="10" placeholder='short description for task'></textarea>
+            <textarea value={taskDescriptionValue}
+            onChange ={handletasKDescriptionchange}
+            name="" id="" cols="30" rows="10" placeholder='short description for task'></textarea>
         </label>
 
         <label htmlFor="">
-            <select name="" id="">
+            <select value={prioritydropdownvalue} onChange={handlePriorityChange}name="" id="">
+                <option value="">Priority</option>
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
             </select>
         </label>
+        <button onClick ={(e) => handletaskModalSubmit(e)}type='submit'>Add Task</button>
+        </form>
         </Modal>
+   {Project.tasks.map(task => {
+    return <TaskCard>
+  
+    </TaskCard>
+   })}
     </main>
 )
 }
