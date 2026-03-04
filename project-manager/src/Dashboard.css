@@ -24,6 +24,10 @@ vertical-align: middle;
     display: inline-flex;
     align-items: center;
     vertical-align: middle;
+    transition: transform 0.15s;
+}
+.new-project-btn:hover{
+ transform: translateY(-3px);
 }
 .user-Email-Avatar{
     display: inline-block;

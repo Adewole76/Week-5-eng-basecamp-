@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useContext } from 'react'
 import { useState } from 'react'
 import Modal from 'react-modal'
+import '../src/projectBoard.css'
 import { firstProjectContext } from '../Context/ProjectContext.jsx'
 import { IoAddCircle } from "react-icons/io5";
 import { IoMdCloseCircle } from "react-icons/io";
@@ -29,11 +30,15 @@ const ProjectBoard = () => {
     }
 return(
     <main className='projects-main'>
-        <h1>{Project.projectName}</h1> 
-        <button onClick={() => addButtonListenerFunction()}>Add Task <IoAddCircle></IoAddCircle></button>
+       <section className='project-main-header'>
+        <h1 className='projectboard-name'>{Project.projectName}</h1> 
+        <button className='addTask-btn' onClick={() => addButtonListenerFunction()}>Add Task <IoAddCircle></IoAddCircle></button>
+        </section>
         <Modal isOpen = {TaskmodalToggle} onRequestClose = {() => setTaskModalToogle(false)}>
+        <header className='section-header'>
           <h2>Add a Task to this Project</h2>
         <IoMdCloseCircle onClick={() => setTaskModalToogle(false)}></IoMdCloseCircle>
+        </header>
         <label htmlFor="">
         Task Name
         <input type="text"  placeholder='Task Name'/>

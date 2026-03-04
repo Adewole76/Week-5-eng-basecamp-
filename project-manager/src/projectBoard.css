@@ -1,0 +1,34 @@
+.project-main-header h1{
+    display: inline-block;
+    margin: 0;
+}
+.addTask-btn{
+    padding: 1.5em;
+    background-color: #1a2c3b;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid transparent;    
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0 0 1em 2em;
+    transition: transform 0.15s;
+}
+.addTask-btn:hover{
+    transform: translateY(-3px);
+}
+.section-header{
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+}
+.section-header h2{
+    margin: 0;
+}
+label {
+    display: block;
+}
+label input, textarea{
+    display: block;
+}
