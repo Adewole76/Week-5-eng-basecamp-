@@ -44,6 +44,10 @@ const ProjectBoard = () => {
     const handletaskModalSubmit = (e) => {
         e.preventDefault();
         addTask(taskNameInputvalue, taskDescriptionValue, prioritydropdownvalue, id)
+        setTaskDescription('')
+        setTaskNameInput('')
+        setPriorityValue('')
+        setTaskModalToogle(false) 
     }
 return(
     <main className='projects-main'>
@@ -56,7 +60,7 @@ return(
           <h2>Add a Task to this Project</h2>
         <IoMdCloseCircle onClick={() => setTaskModalToogle(false)}></IoMdCloseCircle>
         </header>
-        <form action="">
+        <form action="" onSubmit={handletaskModalSubmit}>
         <label htmlFor="">
         Task Name
         <input type="text" 
@@ -79,12 +83,16 @@ return(
                 <option value="Low">Low</option>
             </select>
         </label>
-        <button onClick ={(e) => handletaskModalSubmit(e)}type='submit'>Add Task</button>
+        <button type='submit'>Add Task</button>
         </form>
         </Modal>
    {Project.tasks.map(task => {
-    return <TaskCard>
-  
+    return <TaskCard
+    taskName={taskNameInputvalue}
+    taskDescription={taskNameInputvalue}
+    taskPriority = {prioritydropdownvalue}
+    taskStatus = 'todo'
+    >
     </TaskCard>
    })}
     </main>

@@ -2,6 +2,9 @@
     display: inline-block;
     margin: 0;
 }
+.project-main-header{
+    margin: 0 0 0 0;
+}
 .addTask-btn{
     padding: 1.5em;
     background-color: #1a2c3b;

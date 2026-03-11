@@ -47,7 +47,7 @@ const mappedProjectsArray = ProjectsArray.map(project =>{
   }
 })
 setProjectsArray(mappedProjectsArray);
-localStorage.setItem('projects', mappedProjectsArray);
+localStorage.setItem('projects',JSON.stringify(mappedProjectsArray));
     }
   const addProject = (name, description) => {
    const newProject = {
