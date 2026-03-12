@@ -88,9 +88,9 @@ return(
         </Modal>
    {Project.tasks.map(task => {
     return <TaskCard
-    taskName={taskNameInputvalue}
-    taskDescription={taskNameInputvalue}
-    taskPriority = {prioritydropdownvalue}
+    taskName={task.taskName}
+    taskDescription={task.taskDescription}
+    taskPriority = {task.taskPriority}
     taskStatus = 'todo'
     >
     </TaskCard>
