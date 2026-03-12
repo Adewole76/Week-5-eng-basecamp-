@@ -1,14 +1,18 @@
 import './taskCard.css'
 import { MdDeleteForever } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
-const TaskCard = ({taskName, taskStatus, taskPriority, taskDescription}) => {
+import { IoConstructOutline } from 'react-icons/io5';
+const TaskCard = ({taskName, taskStatus, taskPriority, taskDescription, taskID}) => {
+    const handleFindid = (id) => {
+      console.log(id)
+    }
     return(
         <div className="task-cards">
             <header className='task-head-section'>
             <h4>{taskName}</h4>
             <section>
             <MdDeleteForever size={20} className='icon'></MdDeleteForever>
-            <CiEdit size={20} className='icon'></CiEdit>
+            <CiEdit onClick={() => handleFindid(taskID)}  size={20} className='icon'></CiEdit>
             </section>
             </header>
             <footer>
@@ -16,6 +20,9 @@ const TaskCard = ({taskName, taskStatus, taskPriority, taskDescription}) => {
             <p>{taskPriority}</p>
             </footer>
             <article>{taskDescription}</article>
+            <p style={{
+                display: "none"
+            }}>{taskID}</p>
         </div>
     )
 }

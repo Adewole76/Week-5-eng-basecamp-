@@ -63,8 +63,8 @@ localStorage.setItem('projects',JSON.stringify(mappedProjectsArray));
     setProjectsArray(updatedProjectsArray)
     localStorage.setItem('projects', JSON.stringify(updatedProjectsArray));
   }
-  const updateTask = () => {
-    let replacementTask = Object.create(taskExample)
+  const updateTask = (id) => {
+    
   }
   const deleteTask = () => {
 

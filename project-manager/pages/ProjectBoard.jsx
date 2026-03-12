@@ -92,6 +92,7 @@ return(
     taskDescription={task.taskDescription}
     taskPriority = {task.taskPriority}
     taskStatus = 'todo'
+    taskID={task.taskId}
     >
     </TaskCard>
    })}
