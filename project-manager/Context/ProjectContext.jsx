@@ -65,7 +65,9 @@ localStorage.setItem('projects',JSON.stringify(mappedProjectsArray));
     localStorage.setItem('projects', JSON.stringify(updatedProjectsArray));
   }
   const updateTask = (id, updatename, updatedescription, updatepriority) => {
-    const particularTask = Project.tasks.find(task => task.taskId === id);
+    const tasksInfo = handleFindid(id);
+    console.log(tasksInfo)
+    const particularTask = Project.tasks.find(task => task.taskId === tasksInfo);
     console.log(particularTask)
     particularTask.taskName = updatename;
     particularTask.taskDescription = updatedescription;
@@ -74,8 +76,14 @@ localStorage.setItem('projects',JSON.stringify(mappedProjectsArray));
   const deleteTask = () => {
 
   }
+  const handleFindid = (id) => {
+    setUpdateTaskModal(true)
+    const taskValue = id;
+    return taskValue
+  }
+
     return(
-      <firstProjectContext.Provider value={{addTask, addProject, updateTask, deleteTask, ProjectsArray, updateTaskModalToggle, setUpdateTaskModal }}>
+      <firstProjectContext.Provider value={{addTask, addProject, updateTask, deleteTask, ProjectsArray, updateTaskModalToggle, setUpdateTaskModal,handleFindid }}>
         {children}
       </firstProjectContext.Provider>
     )

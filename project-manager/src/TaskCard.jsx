@@ -6,18 +6,15 @@ import { useContext } from 'react';
 import { firstProjectContext } from '../Context/ProjectContext';
 import { IoConstructOutline } from 'react-icons/io5';
 const TaskCard = ({taskName, taskStatus, taskPriority, taskDescription, taskID}) => {
-const {updateTaskModalToggle, setUpdateTaskModal} = useContext(firstProjectContext)     
-    const handleFindid = (id) => {
-      const taskValue = id;
-      console.log(taskValue)
-    }
+const {updateTaskModalToggle, setUpdateTaskModal, handleFindid} = useContext(firstProjectContext)     
+    
     return(
         <div className="task-cards">
             <header className='task-head-section'>
             <h4>{taskName}</h4>
             <section>
             <MdDeleteForever size={20} className='icon'></MdDeleteForever>
-            <CiEdit onClick={() => setUpdateTaskModal(true)}  size={20} className='icon'></CiEdit>
+            <CiEdit onClick={() => handleFindid(taskID)}  size={20} className='icon'></CiEdit>
             </section>
             </header>
             <footer>

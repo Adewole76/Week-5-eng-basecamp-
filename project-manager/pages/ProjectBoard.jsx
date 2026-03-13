@@ -17,11 +17,11 @@ const ProjectBoard = () => {
     const [updateTaskDescription, setupdateTaskDescription] = useState('')
     const [updateTaskPriority, setUpdateTaskPriorty] = useState('')
     const {id} = useParams();
-    console.log('id from useParams:', id);
+    // console.log('id from useParams:', id);
     const {addTask, ProjectsArray, updateTask, updateTaskModalToggle, setUpdateTaskModal} = useContext(firstProjectContext);
-    console.log(ProjectsArray);
+    // console.log(ProjectsArray);
     const Project = ProjectsArray.find((project) => project.projectId === id);
-    console.log(Project);
+    // console.log(Project);
     const customStyles = {
         content: {
           top: '50%',
@@ -69,9 +69,25 @@ const ProjectBoard = () => {
         setPriorityValue('')
         setTaskModalToogle(false) 
     }
-    const handleTaskUpdateModalSubmit = () => {
+
+    const handleTaskNameUpdate = (event) => {
+        setUpdateTasknameValue(event.target.value);
+      }
+      const handlePriorityUpdate = (event) => {
+        setUpdateTaskPriorty(event.target.value)
+      }
+      const handletasKDescriptionUpdate = (event) => {
+        setupdateTaskDescription(event.target.value)
+      }
+  
+     
+    const handleTaskUpdateModalSubmit = (e) => {
         e.preventDefault();
-        updateTask()
+        updateTask(taskID, updateTaskNameInput, updateTaskDescription, updateTaskPriority )
+        setUpdateTasknameValue('');
+        setUpdateTaskPriorty('');
+        setupdateTaskDescription('')
+        setUpdateTaskModal(false)
     }
 return(
     <main className='projects-main'>
@@ -121,29 +137,29 @@ return(
     </TaskCard>
    })}
    <Modal style={customStyles} isOpen ={updateTaskModalToggle} onRequestClose={() => setUpdateTaskModal(false)}>
-     <form action="">
+     <form action="" onSubmit={handleTaskUpdateModalSubmit}>
         <section className='Header-closebtn'>
      <h4>Update Current Task</h4>
      <IoMdCloseCircle onClick={() => setUpdateTaskModal(false)}></IoMdCloseCircle>
      </section>
     <label htmlFor="">
         Name
-        <input type="text" />
+        <input value={updateTaskNameInput} onChange={handleTaskNameUpdate} type="text" />
     </label>
 
     <label htmlFor="">
         Description
-        <input type ="text"></input>
+        <textarea value={updateTaskDescription} onChange={handletasKDescriptionUpdate} type ="text"></textarea>
     </label>
     <label htmlFor="">
-            <select name="" id="">
+            <select value={updateTaskPriority} onChange={handlePriorityUpdate} name="" id="">
                 <option value="">Priority</option>
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
             </select>
         </label>
-    <button className="edit-Task-btn">Edit Task</button>
+    <button type='submit' className="edit-Task-btn">Edit Task</button>
      </form>
    </Modal>
     </main>
