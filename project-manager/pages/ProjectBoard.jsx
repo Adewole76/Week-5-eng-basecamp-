@@ -13,12 +13,32 @@ const ProjectBoard = () => {
     const [taskNameInputvalue, setTaskNameInput] = useState('')
     const [taskDescriptionValue, setTaskDescription] = useState('')
     const [prioritydropdownvalue, setPriorityValue] = useState('')
+    const [updateTaskNameInput, setUpdateTasknameValue] = useState('')
+    const [updateTaskDescription, setupdateTaskDescription] = useState('')
+    const [updateTaskPriority, setUpdateTaskPriorty] = useState('')
     const {id} = useParams();
     console.log('id from useParams:', id);
-    const {addTask, ProjectsArray} = useContext(firstProjectContext);
+    const {addTask, ProjectsArray, updateTask, updateTaskModalToggle, setUpdateTaskModal} = useContext(firstProjectContext);
     console.log(ProjectsArray);
     const Project = ProjectsArray.find((project) => project.projectId === id);
     console.log(Project);
+    const customStyles = {
+        content: {
+          top: '50%',
+          right: 'auto',
+          left: '50%',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+          width: '800px', 
+          maxWidth: '90vw', 
+        },
+          overlay: {
+            zIndex: 1000,
+            backgroundColor: 'rgba(0, 0, 0, 0.4)' // Set a high z-index value
+          },
+        
+      };
     // const testTasks = [
     //     {
     //         id: '1',
@@ -48,6 +68,10 @@ const ProjectBoard = () => {
         setTaskNameInput('')
         setPriorityValue('')
         setTaskModalToogle(false) 
+    }
+    const handleTaskUpdateModalSubmit = () => {
+        e.preventDefault();
+        updateTask()
     }
 return(
     <main className='projects-main'>
@@ -96,6 +120,32 @@ return(
     >
     </TaskCard>
    })}
+   <Modal style={customStyles} isOpen ={updateTaskModalToggle} onRequestClose={() => setUpdateTaskModal(false)}>
+     <form action="">
+        <section className='Header-closebtn'>
+     <h4>Update Current Task</h4>
+     <IoMdCloseCircle onClick={() => setUpdateTaskModal(false)}></IoMdCloseCircle>
+     </section>
+    <label htmlFor="">
+        Name
+        <input type="text" />
+    </label>
+
+    <label htmlFor="">
+        Description
+        <input type ="text"></input>
+    </label>
+    <label htmlFor="">
+            <select name="" id="">
+                <option value="">Priority</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+        </label>
+    <button className="edit-Task-btn">Edit Task</button>
+     </form>
+   </Modal>
     </main>
 )
 }

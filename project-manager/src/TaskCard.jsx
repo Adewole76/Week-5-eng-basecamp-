@@ -1,10 +1,15 @@
 import './taskCard.css'
 import { MdDeleteForever } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
+import { useState } from 'react';
+import { useContext } from 'react';
+import { firstProjectContext } from '../Context/ProjectContext';
 import { IoConstructOutline } from 'react-icons/io5';
 const TaskCard = ({taskName, taskStatus, taskPriority, taskDescription, taskID}) => {
+const {updateTaskModalToggle, setUpdateTaskModal} = useContext(firstProjectContext)     
     const handleFindid = (id) => {
-      console.log(id)
+      const taskValue = id;
+      console.log(taskValue)
     }
     return(
         <div className="task-cards">
@@ -12,7 +17,7 @@ const TaskCard = ({taskName, taskStatus, taskPriority, taskDescription, taskID})
             <h4>{taskName}</h4>
             <section>
             <MdDeleteForever size={20} className='icon'></MdDeleteForever>
-            <CiEdit onClick={() => handleFindid(taskID)}  size={20} className='icon'></CiEdit>
+            <CiEdit onClick={() => setUpdateTaskModal(true)}  size={20} className='icon'></CiEdit>
             </section>
             </header>
             <footer>

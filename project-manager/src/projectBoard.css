@@ -2,6 +2,12 @@
     display: inline-block;
     margin: 0;
 }
+h4{
+    margin: 0;
+    display: inline-block;
+}
+.Header-closebtn{
+}
 .project-main-header{
     margin: 0 0 0 0;
 }

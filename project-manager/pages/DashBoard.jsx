@@ -113,7 +113,6 @@ const DashBoard = () => {
 </label>
 <button type="submit" className="submit-btn">Submit</button>
    </form>
-
   </Modal>
     </section>
  ) 

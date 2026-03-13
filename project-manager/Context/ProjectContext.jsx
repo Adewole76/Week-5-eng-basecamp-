@@ -4,6 +4,7 @@ import { useEffect } from "react";
 export const firstProjectContext = createContext();
 const ProjectContextProvider = ({children}) => {
   const [ProjectsArray, setProjectsArray] = useState([])
+  const [updateTaskModalToggle, setUpdateTaskModal] = useState (false)
   let projectExample = {
     id: 1,
     name: 'design website',
@@ -63,14 +64,18 @@ localStorage.setItem('projects',JSON.stringify(mappedProjectsArray));
     setProjectsArray(updatedProjectsArray)
     localStorage.setItem('projects', JSON.stringify(updatedProjectsArray));
   }
-  const updateTask = (id) => {
-    
+  const updateTask = (id, updatename, updatedescription, updatepriority) => {
+    const particularTask = Project.tasks.find(task => task.taskId === id);
+    console.log(particularTask)
+    particularTask.taskName = updatename;
+    particularTask.taskDescription = updatedescription;
+    particularTask.taskPriority = updatepriority;
   }
   const deleteTask = () => {
 
   }
     return(
-      <firstProjectContext.Provider value={{addTask, addProject, updateTask, deleteTask, ProjectsArray }}>
+      <firstProjectContext.Provider value={{addTask, addProject, updateTask, deleteTask, ProjectsArray, updateTaskModalToggle, setUpdateTaskModal }}>
         {children}
       </firstProjectContext.Provider>
     )
