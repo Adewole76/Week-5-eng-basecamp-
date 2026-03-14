@@ -18,7 +18,7 @@ const ProjectBoard = () => {
     const [updateTaskPriority, setUpdateTaskPriorty] = useState('')
     const {id} = useParams();
     // console.log('id from useParams:', id);
-    const {addTask, ProjectsArray, updateTask, updateTaskModalToggle, setUpdateTaskModal} = useContext(firstProjectContext);
+    const {addTask, ProjectsArray, updateTask, updateTaskModalToggle, setUpdateTaskModal, taskToEdit} = useContext(firstProjectContext);
     // console.log(ProjectsArray);
     const Project = ProjectsArray.find((project) => project.projectId === id);
     // console.log(Project);
@@ -83,7 +83,7 @@ const ProjectBoard = () => {
      
     const handleTaskUpdateModalSubmit = (e) => {
         e.preventDefault();
-        updateTask(taskID, updateTaskNameInput, updateTaskDescription, updateTaskPriority )
+        updateTask( taskToEdit, Project,updateTaskNameInput, updateTaskDescription, updateTaskPriority )
         setUpdateTasknameValue('');
         setUpdateTaskPriorty('');
         setupdateTaskDescription('')

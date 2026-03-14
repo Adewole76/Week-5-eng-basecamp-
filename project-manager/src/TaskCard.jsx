@@ -7,7 +7,7 @@ import { firstProjectContext } from '../Context/ProjectContext';
 import { IoConstructOutline } from 'react-icons/io5';
 const TaskCard = ({taskName, taskStatus, taskPriority, taskDescription, taskID}) => {
 const {updateTaskModalToggle, setUpdateTaskModal, handleFindid} = useContext(firstProjectContext)     
-    
+
     return(
         <div className="task-cards">
             <header className='task-head-section'>

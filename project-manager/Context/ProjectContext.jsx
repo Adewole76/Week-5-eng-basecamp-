@@ -4,6 +4,7 @@ import { useEffect } from "react";
 export const firstProjectContext = createContext();
 const ProjectContextProvider = ({children}) => {
   const [ProjectsArray, setProjectsArray] = useState([])
+  const [taskToEdit, setTaskToEdit] = useState(null)
   const [updateTaskModalToggle, setUpdateTaskModal] = useState (false)
   let projectExample = {
     id: 1,
@@ -64,10 +65,12 @@ localStorage.setItem('projects',JSON.stringify(mappedProjectsArray));
     setProjectsArray(updatedProjectsArray)
     localStorage.setItem('projects', JSON.stringify(updatedProjectsArray));
   }
-  const updateTask = (id, updatename, updatedescription, updatepriority) => {
-    const tasksInfo = handleFindid(id);
-    console.log(tasksInfo)
-    const particularTask = Project.tasks.find(task => task.taskId === tasksInfo);
+  const handleFindid = (id) => {
+    setTaskToEdit(id)
+    setUpdateTaskModal(true)
+  }
+  const updateTask = (id, project, updatename, updatedescription, updatepriority) => {
+    const particularTask = project.tasks.find((task) => task.taskId === id);
     console.log(particularTask)
     particularTask.taskName = updatename;
     particularTask.taskDescription = updatedescription;
@@ -76,14 +79,10 @@ localStorage.setItem('projects',JSON.stringify(mappedProjectsArray));
   const deleteTask = () => {
 
   }
-  const handleFindid = (id) => {
-    setUpdateTaskModal(true)
-    const taskValue = id;
-    return taskValue
-  }
+
 
     return(
-      <firstProjectContext.Provider value={{addTask, addProject, updateTask, deleteTask, ProjectsArray, updateTaskModalToggle, setUpdateTaskModal,handleFindid }}>
+      <firstProjectContext.Provider value={{addTask, addProject, updateTask, deleteTask, ProjectsArray, updateTaskModalToggle, setUpdateTaskModal,taskToEdit, handleFindid }}>
         {children}
       </firstProjectContext.Provider>
     )
